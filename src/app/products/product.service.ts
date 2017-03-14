@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   // getAll(): Observable<Product[]> {
-  getAll(page: number = 0, pageSize: number = 20, order = 'limited_time_offer_savings_in_cents.desc') {
+  getAll(page: number = 1, pageSize: number = 20, order = 'limited_time_offer_savings_in_cents.desc') {
 
     const headers = new Headers({
       'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',

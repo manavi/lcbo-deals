@@ -8,7 +8,7 @@
     </p>
   </md-list-item>
 </md-list>-->
-
+               <!--[count]="paging.total_record_count"-->
 <ngx-datatable class="material"
                [rows]="products"
                [columnMode]="'standard'"
@@ -16,28 +16,45 @@
                [footerHeight]="50"
                [rowHeight]="'auto'"
                [externalPaging]="true"
-               [count]="paging.total_record_count"
+               [count]="paging.total_record_count" 
                [offset]="offset"
                [limit]="limit"
+               [externalSorting]="true"
                (page)='onPage($event)'
                (sort)="onSort($event)">
   <ngx-datatable-column name="Image" prop="image_thumb_url" [width]="80">
     <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-      <img [src]="value" width="70">
+      <a>
+      <img class="Small" [src]="value" width="80" />
+      <img class="Large" [src]="row.image_url" width="450"  />
+      </a>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column name="Product Name" prop="name" [width]="300">    
-  </ngx-datatable-column>
+  <ngx-datatable-column name="Product Name" prop="name" [width]="300">
+    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+      <strong>{{ value }}</strong>
+      <div>LCBO# {{ row.product_no }} | {{ row.package }}</div>      
+      <div>{{ row.origin }}</div>
+      <div>{{ row.primary_category }} | {{ row.secondary_category }}</div>
+    </ng-template>    
+  </ngx-datatable-column>  
   <ngx-datatable-column name="Regular Price" prop="regular_price_in_cents" [width]="100">
     <ng-template let-value="value" ngx-datatable-cell-template>
-      {{ value / 100 }}
+      <h5>${{ value / 100 }}</h5>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Savings" prop="limited_time_offer_savings_in_cents" [width]="100">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      <h4>${{ value / 100 }}</h4>
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Sales Price" prop="price_in_cents" [width]="100">
-    <ng-template let-value="value" ngx-datatable-cell-template>
-      {{ value / 100 }}
+    <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+      <h4>${{ value / 100 }}</h4>
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Sales ends on" prop="limited_time_offer_ends_on" [width]="120">    
   </ngx-datatable-column>
+  <ngx-datatable-column name="Available" prop="inventory_count" [width]="70">    
+  </ngx-datatable-column>  
 </ngx-datatable>

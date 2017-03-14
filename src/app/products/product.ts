@@ -1,12 +1,19 @@
 export interface Product {
 
   name: string;
+  product_no: number;
+  image_url: string;
   image_thumb_url: string;
   total_package_units: number;
   primary_category: string;
-  price_in_cents: number;
+  secondary_category: string;
   regular_price_in_cents: number;
+  price_in_cents: number;
+  limited_time_offer_savings_in_cents: number;
   limited_time_offer_ends_on: string;
+  package: string;
+  origin: string;
+  inventory_count: number;
 }
 
 export interface Paging {

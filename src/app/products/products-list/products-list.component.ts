@@ -19,7 +19,7 @@ export class ProductsListComponent implements OnInit {
   constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.page(1, 20);
+    this.page();
   }
 
   onPage(event) {
@@ -27,9 +27,9 @@ export class ProductsListComponent implements OnInit {
     this.page(event.offset, event.limit);
   }
 
-  private page(offset, limit) {
+  private page(offset: number = 1, limit: number = 20, sort: string = 'limited_time_offer_savings_in_cents.desc') {
 
-    this.productService.getAll(offset, limit).subscribe(res => {
+    this.productService.getAll(offset, limit, sort).subscribe(res => {
       this.products = res.result;
       this.paging = res.pager;
     });
@@ -39,10 +39,9 @@ export class ProductsListComponent implements OnInit {
     // event was triggered, start sort sequence
     console.log('Sort Event', event);
 
-    // const sort = event.sorts[0];
+    const sort = event.sorts[0];
 
-
-
+    this.page(1, this.limit, `${sort.prop}.${sort.dir}`);
     
     // // emulate a server request with a timeout
     // setTimeout(() => {

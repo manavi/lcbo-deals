@@ -1,2 +1,16 @@
+<nav md-tab-nav-bar>
+  <a md-tab-link     
+     [routerLink]="list"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Product List
+  </a>
+  <a md-tab-link     
+     [routerLink]="grid"
+     routerLinkActive #rla="routerLinkActive"
+     [active]="rla.isActive">
+    Product Grid
+  </a>
+</nav>
 <router-outlet></router-outlet>
 
