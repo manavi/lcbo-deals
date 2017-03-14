@@ -1,0 +1,30 @@
+<!--<md-list>
+  <md-list-item *ngFor="let product of products">
+    <img md-list-avatar [src]="product.image_thumb_url" alt="...">
+    <h3 md-line> {{product.name}} </h3>
+    <p md-line>
+      <span> {{product.total_package_units}} </span>
+      <span class="demo-2"> ${{ product.price_in_cents / 100 }} </span>
+    </p>
+  </md-list-item>
+</md-list>-->
+
+<ngx-datatable class="material"
+               [rows]="products"
+               [columnMode]="'standard'"
+               [headerHeight]="50"
+               [footerHeight]="50"
+               [rowHeight]="'auto'">
+  <ngx-datatable-column name="Image" prop="image_thumb_url" [width]="80">
+    <template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <img [src]="value" width="70">
+    </template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Product Name" prop="name" [width]="300">    
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Price" prop="price_in_cents" [width]="80">
+    <template let-value="value" ngx-datatable-cell-template>
+      {{ value / 100 }}
+    </template>
+  </ngx-datatable-column>
+</ngx-datatable>
