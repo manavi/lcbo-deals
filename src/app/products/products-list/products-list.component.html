@@ -14,17 +14,30 @@
                [columnMode]="'standard'"
                [headerHeight]="50"
                [footerHeight]="50"
-               [rowHeight]="'auto'">
+               [rowHeight]="'auto'"
+               [externalPaging]="true"
+               [count]="paging.total_record_count"
+               [offset]="offset"
+               [limit]="limit"
+               (page)='onPage($event)'
+               (sort)="onSort($event)">
   <ngx-datatable-column name="Image" prop="image_thumb_url" [width]="80">
-    <template let-row="row" let-value="value" ngx-datatable-cell-template>
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
       <img [src]="value" width="70">
-    </template>
+    </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column name="Product Name" prop="name" [width]="300">    
   </ngx-datatable-column>
-  <ngx-datatable-column name="Price" prop="price_in_cents" [width]="80">
-    <template let-value="value" ngx-datatable-cell-template>
+  <ngx-datatable-column name="Regular Price" prop="regular_price_in_cents" [width]="100">
+    <ng-template let-value="value" ngx-datatable-cell-template>
       {{ value / 100 }}
-    </template>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Sales Price" prop="price_in_cents" [width]="100">
+    <ng-template let-value="value" ngx-datatable-cell-template>
+      {{ value / 100 }}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="Sales ends on" prop="limited_time_offer_ends_on" [width]="120">    
   </ngx-datatable-column>
 </ngx-datatable>

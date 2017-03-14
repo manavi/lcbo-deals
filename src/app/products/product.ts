@@ -2,9 +2,11 @@ export interface Product {
 
   name: string;
   image_thumb_url: string;
-  price_in_cents: number;
   total_package_units: number;
   primary_category: string;
+  price_in_cents: number;
+  regular_price_in_cents: number;
+  limited_time_offer_ends_on: string;
 }
 
 export interface Paging {

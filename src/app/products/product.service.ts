@@ -16,7 +16,7 @@ export class ProductService {
   }
 
   // getAll(): Observable<Product[]> {
-  getAll() {
+  getAll(page: number = 0, pageSize: number = 20, order = 'limited_time_offer_savings_in_cents.desc') {
 
     const headers = new Headers({
       'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -27,8 +27,8 @@ export class ProductService {
     // return this.http.get(`${this.baseUrl}`, options)
     //            .map(res => res.json().result);
 
-    return this.http.get(`${this.baseUrl2}`)
-                    .map(res => res.json().result);
+    return this.http.get(`${this.baseUrl2}&page=${page}&per_page=${pageSize}&order=${order}`)
+                    .map(res => res.json());
   }
 
   // private extractData(res: Response) {
