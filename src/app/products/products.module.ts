@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 // import { MaterialModule } from '@angular/material';
+import { MaterialModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DataTableModule } from 'primeng/primeng';
 
@@ -25,6 +26,7 @@ const routes = [
     CommonModule,
     NgxDatatableModule,
     DataTableModule,
+    MaterialModule,
     RouterModule.forRoot(routes),
   ],
   declarations: [ProductsListComponent, ProductsGridComponent],

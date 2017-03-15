@@ -1,3 +1,10 @@
+<div>
+  <md-select placeholder="Liquor Type" name="liquor">
+    <md-option *ngFor="let liquor of liquors" [value]="liquor">
+      {{ liquor }}
+    </md-option>
+  </md-select>
+</div>
 <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
     <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
     <input type="text" pInputText size="50" placeholder="Global Filter" (keypress)="filter($event)">
@@ -12,7 +19,7 @@
     [rowsPerPageOptions]="[10,20,50,100]"
     (onLazyLoad)="loadProductsLazy($event)">
     <p-footer>{{ paging.total_record_count }} Records found</p-footer>
-    <p-column field="image_thumb_url" header="" [style]="{'width':'100px'}">
+    <p-column field="image_thumb_url" header="" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <a>
           <img class="Small" [src]="product[col.field]" width="80" />
@@ -20,7 +27,7 @@
         </a>
       </ng-template>
     </p-column>
-    <p-column field="name" header="Product Name" [style]="{'width':'300px'}">
+    <p-column field="name" header="Product Name" [style]="{'width':'150px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <strong>{{ product[col.field] }}</strong>
         <div>LCBO# {{ product.product_no }} | {{ product.package }}</div>      
@@ -28,32 +35,32 @@
         <div>{{ product.primary_category }} | {{ product.secondary_category }}</div>
     </ng-template>    
     </p-column>
-    <p-column field="alcohol_content" [sortable]="true" header="Alcohol Content" [style]="{'width':'100px'}">
+    <p-column field="alcohol_content" [sortable]="true" header="Alcohol Content" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <h5>%{{ product[col.field] / 100 }}</h5>
       </ng-template>  
     </p-column>    
-    <p-column field="volume_in_milliliters" [sortable]="true" header="Volume" [style]="{'width':'100px'}">
+    <p-column field="volume_in_milliliters" [sortable]="true" header="Volume" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <h5>{{ product[col.field] }}mL</h5>
       </ng-template>  
     </p-column>           
-    <p-column field="regular_price_in_cents" [sortable]="true" header="Regular Price" [style]="{'width':'100px'}">
+    <p-column field="regular_price_in_cents" [sortable]="true" header="Regular Price" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <h5>${{ product[col.field] / 100 }}</h5>
       </ng-template>  
     </p-column>
-    <p-column field="limited_time_offer_savings_in_cents" [sortable]="true" header="Savings" [style]="{'width':'100px'}">
+    <p-column field="limited_time_offer_savings_in_cents" [sortable]="true" header="Savings" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <h5>${{ product[col.field] / 100 }}</h5>
       </ng-template>  
     </p-column>
-    <p-column field="price_in_cents" header="Sales Price" [sortable]="true" [style]="{'width':'100px'}">
+    <p-column field="price_in_cents" header="Sales Price" [sortable]="true" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
-        <h5>${{ product[col.field] / 100 }}</h5>
+        <strong>${{ product[col.field] / 100 }}</strong>
       </ng-template>  
     </p-column>
-    <p-column field="limited_time_offer_ends_on" header="Sales ends on" [sortable]="true" [style]="{'width':'120px'}">
+    <p-column field="limited_time_offer_ends_on" header="Sales ends on" [sortable]="true" [style]="{'width':'70px'}">
       <ng-template let-col let-product="rowData" pTemplate="body">
         <h5>{{ product[col.field] | date:'longDate' }}</h5>
       </ng-template>        

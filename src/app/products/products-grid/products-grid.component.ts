@@ -15,6 +15,7 @@ export class ProductsGridComponent implements OnInit {
   paging: Paging = <Paging>{};
   sort = 'limited_time_offer_savings_in_cents.desc.desc';
   query = '';
+  liquors = ['Beer', 'Wine', 'Vodka', 'Whisky'];
 
   constructor(private productService: ProductService) { }
 
