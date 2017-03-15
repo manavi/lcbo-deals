@@ -14,6 +14,8 @@ export interface Product {
   package: string;
   origin: string;
   inventory_count: number;
+  alcohol_content;
+  volume_in_milliliters;
 }
 
 export interface Paging {

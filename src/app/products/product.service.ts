@@ -9,25 +9,31 @@ import { Product } from './product';
 @Injectable()
 export class ProductService {
 
-  private baseUrl = `http://lcboapi.com/products`;
-  private baseUrl2 = `http://lcboapi.com/products?access_key=MDpiNzRjZDEyOC0wODIwLTExZTctYTM2Zi02MzA3MmU2NjE0MzQ6eXJNWTRVMkl4RTdXUkYyODNnVFdaQUVUVmVhVVp1ZDBpWVlz`;
+  // private baseUrl = `http://lcboapi.com/products`;
+  private baseUrl = `http://lcboapi.com/products?access_key=MDpiNzRjZDEyOC0wODIwLTExZTctYTM2Zi02MzA3MmU2NjE0MzQ6eXJNWTRVMkl4RTdXUkYyODNnVFdaQUVUVmVhVVp1ZDBpWVlz`;
 
   constructor(public http: Http) {
   }
 
   // getAll(): Observable<Product[]> {
-  getAll(page: number = 1, pageSize: number = 20, order = 'limited_time_offer_savings_in_cents.desc') {
+  getAll(page: number = 1, pageSize: number = 20, order = 'limited_time_offer_savings_in_cents.desc', query = '') {
 
-    const headers = new Headers({
-      'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
-      'Authorization': 'MDpiNzRjZDEyOC0wODIwLTExZTctYTM2Zi02MzA3MmU2NjE0MzQ6eXJNWTRVMkl4RTdXUkYyODNnVFdaQUVUVmVhVVp1ZDBpWVlz' });
+    // const headers = new Headers({
+    //   'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8',
+    //   'Authorization': 'MDpiNzRjZDEyOC0wODIwLTExZTctYTM2Zi02MzA3MmU2NjE0MzQ6eXJNWTRVMkl4RTdXUkYyODNnVFdaQUVUVmVhVVp1ZDBpWVlz' });
 
-    const options = new RequestOptions({ headers: headers });
+    // const options = new RequestOptions({ headers: headers });
 
     // return this.http.get(`${this.baseUrl}`, options)
     //            .map(res => res.json().result);
 
-    return this.http.get(`${this.baseUrl2}&page=${page}&per_page=${pageSize}&order=${order}`)
+    let qs = `${this.baseUrl}&page=${page}&per_page=${pageSize}&order=${order}`;
+
+    if (query !== '') {
+      qs += `&q=${query}`;
+    }
+
+    return this.http.get(qs)
                     .map(res => res.json());
   }
 

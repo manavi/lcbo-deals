@@ -24,7 +24,7 @@ const routes = [
   imports: [
     CommonModule,
     NgxDatatableModule,
-    // MaterialModule,
+    DataTableModule,
     RouterModule.forRoot(routes),
   ],
   declarations: [ProductsListComponent, ProductsGridComponent],
