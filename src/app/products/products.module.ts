@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 // import { MaterialModule } from '@angular/material';
 import { MaterialModule } from '@angular/material';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { DataTableModule } from 'primeng/primeng';
+import { DataTableModule, DropdownModule } from 'primeng/primeng';
 
 import { ProductService } from './product.service';
 import { ProductsListComponent } from './products-list/products-list.component';
@@ -26,6 +26,7 @@ const routes = [
     CommonModule,
     NgxDatatableModule,
     DataTableModule,
+    DropdownModule,
     MaterialModule,
     RouterModule.forRoot(routes),
   ],
